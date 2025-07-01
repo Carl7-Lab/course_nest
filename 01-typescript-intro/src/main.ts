@@ -1,10 +1,10 @@
+import { pokemonIds } from './bases/02-objects'
 import './style.css'
-import { name, age } from './bases/01-types.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
-    <h1>Hola ${name} !!!</h1>
-    <h2>Edad: ${age}</h2>
+    <h1>Hola Vite + TypeScript !!!</h1>
+    <p>Pokemon ID: ${pokemonIds[0]}</p>
   </div>
 `
 
