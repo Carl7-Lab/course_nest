@@ -1,10 +1,12 @@
-import { pokemonIds } from './bases/02-objects'
+import { charmander } from './bases/03-clases'
 import './style.css'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
     <h1>Hola Vite + TypeScript !!!</h1>
-    <p>Pokemon ID: ${pokemonIds[0]}</p>
+    <p>Pokemon ID: ${charmander.id}</p>
+    <p>Pokemon Name: ${charmander.name}</p>
+    <p>Pokemon Age: ${charmander.age}</p>
   </div>
 `
 
