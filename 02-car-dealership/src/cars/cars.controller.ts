@@ -25,7 +25,7 @@ export class CarsController {
   }
 
   @Post()
-  createCar(@Body() body: any) {
+  createCar(@Body() body: { brand: string; model: string }) {
     return {
       ok: true,
       message: 'Car created',
@@ -35,7 +35,10 @@ export class CarsController {
   }
 
   @Patch(':id')
-  updateCar(@Param('id', ParseIntPipe) id: number, @Body() body: any) {
+  updateCar(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() body: { brand: string; model: string },
+  ) {
     return {
       ok: true,
       message: 'Car updated',
