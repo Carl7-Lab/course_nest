@@ -39,16 +39,19 @@ docker compose up -d
 
 Esto iniciará MongoDB en el puerto 27017.
 
-### 4. Variables de entorno
+### 4. Clonar el archivo `.env.template` y renombrar la copia a `.env`
+
+### 5. Variables de entorno
 
 Crea un archivo `.env` en la raíz del proyecto con la siguiente configuración:
 
 ```env
 MONGODB_URI=mongodb://localhost:27017/pokedex
 PORT=3000
+DEFAULT_LIMIT=5
 ```
 
-### 5. Ejecutar el proyecto
+### 6. Ejecutar el proyecto
 
 #### En modo desarrollo:
 
@@ -63,7 +66,7 @@ npm run build
 npm run start:prod
 ```
 
-### 6. Reconstruir la base de datos con la semilla
+### 7. Reconstruir la base de datos con la semilla
 
 ```
 http://localhost:3000/api/v2/seed
