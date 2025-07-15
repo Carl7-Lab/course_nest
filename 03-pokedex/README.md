@@ -63,6 +63,12 @@ npm run build
 npm run start:prod
 ```
 
+### 6. Reconstruir la base de datos con la semilla
+
+```
+http://localhost:3000/api/v2/seed
+```
+
 ## 📡 Endpoints de la API
 
 Una vez que el servidor esté corriendo, podrás acceder a los siguientes endpoints:
@@ -101,6 +107,7 @@ src/
 - **Mongoose** - ODM para MongoDB
 - **Docker** - Contenedorización
 - **TypeScript** - Lenguaje de programación
+- **Axios** - Cliente HTTP para peticiones
 
 ## 📝 Notas Importantes
 
