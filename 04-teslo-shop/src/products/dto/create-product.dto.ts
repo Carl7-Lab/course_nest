@@ -10,6 +10,30 @@ import {
   MinLength,
 } from 'class-validator';
 
+export enum ValidSizes {
+  XS = 'XS',
+  S = 'S',
+  M = 'M',
+  L = 'L',
+  XL = 'XL',
+  XXL = 'XXL',
+  XXXL = 'XXXL',
+}
+
+export enum ValidTypes {
+  SHIRTS = 'shirts',
+  PANTS = 'pants',
+  HOODIES = 'hoodies',
+  HATS = 'hats',
+}
+
+export enum ValidGenders {
+  MEN = 'men',
+  WOMEN = 'women',
+  KID = 'kid',
+  UNISEX = 'unisex',
+}
+
 export class CreateProductDto {
   @IsString()
   @MinLength(1)
@@ -37,13 +61,26 @@ export class CreateProductDto {
 
   @IsString({ each: true })
   @IsArray()
-  sizes: string[];
+  @IsIn(Object.values(ValidSizes), { each: true })
+  sizes: ValidSizes[];
 
-  @IsIn(['men', 'women', 'kid', 'unisex'])
-  gender: string;
+  @IsString()
+  @IsIn(Object.values(ValidTypes))
+  @IsOptional()
+  type?: ValidTypes;
+
+  @IsString()
+  @IsIn(Object.values(ValidGenders))
+  @IsOptional()
+  gender?: ValidGenders;
 
   @IsString({ each: true })
   @IsArray()
   @IsOptional()
   tags?: string[];
+
+  @IsString({ each: true })
+  @IsArray()
+  @IsOptional()
+  images?: string[];
 }

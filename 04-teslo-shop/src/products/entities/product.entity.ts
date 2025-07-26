@@ -3,10 +3,17 @@ import {
   BeforeUpdate,
   Column,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { ProductImage } from '.';
+import {
+  ValidGenders,
+  ValidSizes,
+  ValidTypes,
+} from '../dto/create-product.dto';
 
-@Entity()
+@Entity({ name: 'products' })
 export class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -27,13 +34,22 @@ export class Product {
   stock: number;
 
   @Column('text', { array: true })
-  sizes: string[];
+  sizes: ValidSizes[];
 
   @Column('text')
-  gender: string;
+  type: ValidTypes;
+
+  @Column('text')
+  gender: ValidGenders;
 
   @Column('text', { array: true, default: [] })
   tags: string[];
+
+  @OneToMany(() => ProductImage, (productImage) => productImage.product, {
+    cascade: true,
+    eager: true,
+  })
+  images?: ProductImage[];
 
   @BeforeInsert()
   checkSlugInsert() {
